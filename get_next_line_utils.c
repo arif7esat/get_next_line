@@ -6,7 +6,7 @@
 /*   By: agungor < agungor@student.42kocaeli.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 02:20:23 by agungor           #+#    #+#             */
-/*   Updated: 2023/11/05 15:45:24 by agungor          ###   ########.fr       */
+/*   Updated: 2023/11/05 16:08:20 by agungor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,3 +66,13 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
+char	*ft_strdup(const char *s1)
+{
+	size_t	len;
+	char	*my_strdup;
+
+	len = ft_strlen(s1) + 1;
+	my_strdup = malloc(sizeof(char) * len);
+	if (my_strdup)
+		return (my_strdup[len] = '\0', ft_memcpy(my_strdup, s1, len));
+}

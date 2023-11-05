@@ -6,7 +6,7 @@
 /*   By: agungor < agungor@student.42kocaeli.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:17:01 by agungor           #+#    #+#             */
-/*   Updated: 2023/11/05 13:09:26 by agungor          ###   ########.fr       */
+/*   Updated: 2023/11/05 16:07:43 by agungor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,24 @@ static char	*ft_read_left_str(char *left_str, int fd)
 	}
 	free(buffer);
 	return (left_str);
+}
+
+char	*ft_get_line(char *left_str)
+{
+	char	*ready_line;
+	size_t	len;
+
+	if (!*left_str || !left_str)
+		return (NULL);
+	if (!ft_strchr(left_str, '\n'))
+		ft_strdup(left_str);
+	len = ft_strchr(left_str, '\n') - left_str;
+	ready_line = (char *)malloc((len + 2) * sizeof(char));
+	if (!ready_line)
+		return (NULL);
+	while (len-- >= 0)
+		ready_line[len] = left_str[len];
+	return (ready_line[len] = '\n', ready_line[len] = '\0', ready_line);
 }
 
 char	*get_next_line(int fd)
